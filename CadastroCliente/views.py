@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from CadastroCliente.models import Cliente, Profissoes
+from CadastroCliente.models import Cliente, Profissoes, Telefone
 
 # Create your views here.
 def index (request):
@@ -38,7 +38,10 @@ def listar_profissoes(request):
 
 def detalhar_cliente(request, id):
     cliente = Cliente.objects.get(id = id)
+    telefones = Telefone.objects.filter(cliente_id = id)
+
     context = {
-        "cliente" : cliente
+        "cliente" : cliente,
+        "telefones" : telefones
     }
     return render (request, "cliente_detalhes.html", context)

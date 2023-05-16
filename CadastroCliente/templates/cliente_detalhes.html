@@ -17,11 +17,43 @@
         </tr>
         <tr>
             <td>Data de nascimento</td>
-            <td>{{cliente.data_nascimento}}</td>
+            <td>{{cliente.data_nascimento| date:"d/m/Y"}}</td>
         <tr>
                 <td>Endereço:</td>
-                <td>{{cliente.endereco}}</td>
+                <td>{{cliente.endereco}}, {{cliente.nro}} - {{cliente.bairro}} - {{cliente.cidade}}</td>
         </tr>
+        </tr>
+        <tr>
+            <td>Cpf:</td>
+            <td>{{ cliente.cpf}}</td>
+        </tr>
+        <tr>
+            <td>E-mail:</td>
+            <td>{{ cliente.email }}</td>
+        </tr>
+        <tr>
+            <td>Matricula:</td>
+            <td>{{ cliente.matricula }}</td>
+        </tr>
+        <tr>
+            <td>Estado Civil:</td>
+            <td>{{ cliente.get_estado_civil_display }}</td>
+        </tr>
+        <tr>
+            <td>Profissao:</td>
+            <td>{{ cliente.profissao }}</td>
+
+        </tr>
+        <tr>
+            <td>Interesses:</td>
+            <td>{{ cliente.Interesse.all|join:", " }}</td>
+        </tr>
+        <tr>
+            <td>Telefones:</td>
+            <td>{% for tel in telefones %}
+                    ({{ tel.ddd }}) {{tel.numero}} <br>
+                {% endfor %}
+            </td>
         </tr>
     </table>
 
